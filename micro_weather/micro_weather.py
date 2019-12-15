@@ -1,21 +1,13 @@
+import os
+import time
+import datetime
 import requests
 import json
 import csv
-import time
-import datetime
 
 import settings
 
-API_KEY = settings.API_KEY
-BASE_URL = 'http://api.openweathermap.org/data/2.5/weather?'
-CITY_ID = '1850147' # TOKYO
-HEADER = 'dt', 'city name', 'city id', 'city name', 'city id', \
-         'weather', 'weather description', \
-         'temperature', 'humidity', 'wind speed'
-
-
-def call_weather_api():
-    url = BASE_URL + 'id=' + CITY_ID + '&APPID=' + API_KEY
+def get_weather_data(url):
 
     response = requests.get(url)
 
@@ -23,7 +15,6 @@ def call_weather_api():
         return ""
 
     return response.text
-
 
 def get_weather_data_csv(json_data):
     json_dict = json.loads(json_data)
@@ -44,14 +35,15 @@ def write_weather_data_to_csv(data):
     f = open('./data/' + current_time + '_tokyo_weather.csv', 'w')
     writer = csv.writer(f, lineterminator='\n')
 
-    writer.writerow(HEADER)
+    writer.writerow(settings.HEADER)
     writer.writerow(data)
     f.close()
 
 
 if __name__ == "__main__":
+    url = settings.BASE_URL + 'id=' + settings.CITY_ID + '&APPID=' + settings.API_KEY
 
-    weather_data_json = call_weather_api()
+    weather_data_json = get_weather_data(url)
 
     if weather_data_json:
         weather_data_csv = get_weather_data_csv(weather_data_json)
