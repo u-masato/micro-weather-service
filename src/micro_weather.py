@@ -7,6 +7,7 @@ import csv
 
 import settings
 
+
 def get_weather_data(url):
 
     response = requests.get(url)
@@ -15,6 +16,7 @@ def get_weather_data(url):
         return ""
 
     return response.text
+
 
 def get_weather_data_csv(json_data):
     json_dict = json.loads(json_data)

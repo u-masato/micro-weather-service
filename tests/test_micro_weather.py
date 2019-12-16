@@ -4,9 +4,7 @@ import unittest
 import json
 import glob
 import shutil
-
-sys.path.append("../micro_weather")
-
+import pytest
 import settings
 import micro_weather as weather
 
