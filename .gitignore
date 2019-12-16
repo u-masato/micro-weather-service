@@ -1,6 +1,7 @@
 # original
 .env
 micro_weather/data/
+tests/data/
 
 # General
 .DS_Store
