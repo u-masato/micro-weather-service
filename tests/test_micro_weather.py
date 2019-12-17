@@ -5,14 +5,17 @@ import json
 import glob
 import shutil
 import pytest
-import settings
-import micro_weather as weather
+
+from microweather.settings import BASE_URL, API_KEY, CITY_ID, HEADER
+from microweather.weather import call_weather_api
+from microweather.weather import get_weather_data
+from microweather.weather import write_weather_data_to_csv
 
 class TestMicroWeather(unittest.TestCase):
 
     def test_call_weather_api_normal_01(self):
-        url = settings.BASE_URL + 'id=' + settings.CITY_ID + '&APPID=' + settings.API_KEY
-        data  = weather.call_weather_api(url)
+        url = BASE_URL + 'id=' + CITY_ID + '&APPID=' + API_KEY
+        data  = call_weather_api(url)
 
         self.assertTrue(type(data), type(""))
 
@@ -36,15 +39,15 @@ class TestMicroWeather(unittest.TestCase):
     def test_call_weather_api_wrong_01(self):
 
         wrong_url = "https://www.not_exist.com/"
-        self.assertEqual(weather.call_weather_api(wrong_url), "")
+        self.assertEqual(call_weather_api(wrong_url), "")
 
         wrong_CITY_ID = '9999'
-        url = settings.BASE_URL + 'id=' + wrong_CITY_ID + '&APPID=' + settings.API_KEY
-        self.assertEqual(weather.call_weather_api(url), "")
+        url = BASE_URL + 'id=' + wrong_CITY_ID + '&APPID=' + API_KEY
+        self.assertEqual(call_weather_api(url), "")
 
         wrong_api_key = "xxx"
-        url = settings.BASE_URL + 'id=' + settings.CITY_ID + '&APPID=' + wrong_api_key
-        self.assertEqual(weather.call_weather_api(url), "")
+        url = BASE_URL + 'id=' + CITY_ID + '&APPID=' + wrong_api_key
+        self.assertEqual(call_weather_api(url), "")
 
 
     def test_get_weather_data_01(self):
@@ -57,7 +60,7 @@ class TestMicroWeather(unittest.TestCase):
 
         expected = [1576424667, "Tokyo", 1850147, "Clouds", "scattered clouds", 278.04, 61, 4.1]
 
-        self.assertEqual(weather.get_weather_data(json_data), expected)
+        self.assertEqual(get_weather_data(json_data), expected)
 
 
     def test_write_weather_data_to_csv_01(self):
@@ -66,10 +69,10 @@ class TestMicroWeather(unittest.TestCase):
             shutil.rmtree('./data')
 
         write_data = (1576424667, "Tokyo", 1850147, "Clouds", "scattered clouds", 278.04, 61, 4.1)
-        expected_header = ','.join(map(str,settings.HEADER))
+        expected_header = ','.join(map(str,HEADER))
         expected_data = ','.join(map(str, write_data))
 
-        weather.write_weather_data_to_csv(write_data)
+        write_weather_data_to_csv(write_data)
 
         self.assertTrue(os.path.exists('./data'))
 

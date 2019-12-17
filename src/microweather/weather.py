@@ -5,8 +5,10 @@ import requests
 import json
 import csv
 
-import settings
-
+from microweather.settings import BASE_URL
+from microweather.settings import CITY_ID
+from microweather.settings import API_KEY
+from microweather.settings import HEADER
 
 def call_weather_api(url):
 
@@ -45,7 +47,7 @@ def write_weather_data_to_csv(data):
 
     try:
         writer = csv.writer(f, lineterminator='\n')
-        writer.writerow(settings.HEADER)
+        writer.writerow(HEADER)
         writer.writerow(data)
         f.close()
     except Exception as e:
@@ -56,7 +58,7 @@ def write_weather_data_to_csv(data):
 
 
 if __name__ == "__main__":
-    url = settings.BASE_URL + 'id=' + settings.CITY_ID + '&APPID=' + settings.API_KEY
+    url = BASE_URL + 'id=' + CITY_ID + '&APPID=' + API_KEY
     weather_data_json = call_weather_api(url)
     if weather_data_json:
         weather_data_csv = get_weather_data(weather_data_json)

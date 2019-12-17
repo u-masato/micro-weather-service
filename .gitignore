@@ -1,7 +1,7 @@
 # original
 .env
 /data
-/src/data/
+/src/microweather/data/
 /tests/data/
 
 # General
