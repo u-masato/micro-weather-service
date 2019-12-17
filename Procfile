@@ -1,1 +1,1 @@
-web: gunicorn src.app:app --log-file -
+web: gunicorn microweather.app:app --log-file -
