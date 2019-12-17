@@ -7,6 +7,7 @@ import shutil
 import pytest
 import settings
 import micro_weather as weather
+import app
 
 class TestMicroWeather(unittest.TestCase):
 
