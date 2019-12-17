@@ -1,6 +1,6 @@
 # original
 .env
-micro_weather/data/
+src/data/
 tests/data/
 
 # General
