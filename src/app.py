@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for
 import os
-import src.settings
-import src.micro_weather as weather
+import settings
+import micro_weather as weather
 
 app = Flask(__name__)
 

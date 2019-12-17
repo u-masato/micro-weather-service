@@ -5,7 +5,7 @@ import requests
 import json
 import csv
 
-import src.settings
+import settings
 
 
 def call_weather_api(url):

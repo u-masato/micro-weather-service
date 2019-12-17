@@ -15,8 +15,8 @@ setup(
     author_email='masato.u20@gmail.com',
     url='https://github.com/u-masato/micro-weather-service',
 
-    packages=find_packages(where='src'),
-    package_dir={'': 'src'},
+    # packages=find_packages(where='src'),
+    # package_dir={'': 'src'},
 
     install_requires=_requires_from_file('requirements.txt'),
     extras_require={},
