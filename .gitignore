@@ -1,5 +1,6 @@
 # original
 .env
+/data
 /src/data/
 /tests/data/
 

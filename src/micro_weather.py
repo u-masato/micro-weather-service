@@ -40,12 +40,19 @@ def write_weather_data_to_csv(data):
         os.mkdir('./data')
 
     current_time = datetime.datetime.fromtimestamp(time.time()).strftime('%Y%m%d%H%M%S')
-    f = open('./data/' + current_time + '_tokyo_weather.csv', 'w')
-    writer = csv.writer(f, lineterminator='\n')
+    csv_file = './data/' + current_time + '_tokyo_weather.csv'
+    f = open(csv_file, 'w')
 
-    writer.writerow(settings.HEADER)
-    writer.writerow(data)
-    f.close()
+    try:
+        writer = csv.writer(f, lineterminator='\n')
+        writer.writerow(settings.HEADER)
+        writer.writerow(data)
+        f.close()
+    except Exception as e:
+        print(e)
+        return ""
+
+    return csv_file
 
 
 if __name__ == "__main__":
