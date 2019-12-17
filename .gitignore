@@ -1,7 +1,7 @@
 # original
 .env
-src/data/
-tests/data/
+/src/data/
+/tests/data/
 
 # General
 .DS_Store

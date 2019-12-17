@@ -50,6 +50,7 @@ jobs:
           command: |
             . venv/bin/activate
             pytest --junitxml=test-reports/junit.xml
+            rm src/data/*
 
       - store_artifacts:
           path: test-reports
@@ -67,7 +68,7 @@ jobs:
 
 workflows:
   version: 2
-  build_and_test:
+  build_and_test_and_deploy:
     jobs:
       - build
       - test:
