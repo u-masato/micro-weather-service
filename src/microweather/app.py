@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 
 from microweather.settings import BASE_URL, CITY_ID, API_KEY
 from microweather.weather import call_weather_api

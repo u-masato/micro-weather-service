@@ -10,7 +10,6 @@ from microweather.settings import BASE_URL, API_KEY, CITY_ID, HEADER
 from microweather.weather import call_weather_api
 from microweather.weather import get_weather_data
 from microweather.weather import write_weather_data_to_csv
-from microweather.app import weather_service
 
 
 class TestMicroWeather(unittest.TestCase):
@@ -82,10 +81,6 @@ class TestMicroWeather(unittest.TestCase):
             l = f.readlines()
             self.assertEqual(expected_header, l[0].strip())
             self.assertEqual(expected_data, l[1].strip())
-
-    def test_weather_service_01(self):
-
-        self.assertNotEqual(weather_service(), "error: can't get weather data")
 
 
 if __name__ == '__main__':
