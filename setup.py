@@ -22,5 +22,6 @@ setup(
     install_requires=_requires_from_file('requirements.txt'),
     extras_require={},
 
-    tests_require=["pytest"],
+    tests_require=["pytest"]
+    ,
 )
