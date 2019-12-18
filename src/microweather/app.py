@@ -1,9 +1,9 @@
 from flask import Flask
 
-from settings import BASE_URL, CITY_ID, API_KEY
-from weather import call_weather_api
-from weather import get_weather_data
-from weather import write_weather_data_to_csv
+from microweather.settings import BASE_URL, CITY_ID, API_KEY
+from microweather.weather import call_weather_api
+from microweather.weather import get_weather_data
+from microweather.weather import write_weather_data_to_csv
 
 app = Flask(__name__)
 
