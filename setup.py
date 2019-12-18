@@ -2,6 +2,7 @@
 
 from setuptools import setup, find_packages
 
+
 def _requires_from_file(filename):
     return open(filename).read().splitlines()
 
@@ -21,6 +22,5 @@ setup(
     install_requires=_requires_from_file('requirements.txt'),
     extras_require={},
 
-    tests_require=["pytest"]
-    ,
+    tests_require=["pytest"],
 )

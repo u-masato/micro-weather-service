@@ -5,10 +5,11 @@ import requests
 import json
 import csv
 
-from microweather.settings import BASE_URL
-from microweather.settings import CITY_ID
-from microweather.settings import API_KEY
-from microweather.settings import HEADER
+from settings import BASE_URL
+from settings import CITY_ID
+from settings import API_KEY
+from settings import HEADER
+
 
 def call_weather_api(url):
 
